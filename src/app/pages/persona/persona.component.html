@@ -1,0 +1,89 @@
+<nav class="navbar bg-primary" style="padding-left:2%;padding-right:2%">
+    <div class="navbar-brand text-white">
+        <img src="../../../favicon.ico" width="30" height="30" class="d-inline-block align-top" alt="">
+        FrontEndUdeM
+    </div>
+    
+</nav>
+<div class="pb-3"></div>
+<div class="container-fluid" >
+
+  <h1 face="nunito,arial,verdana" style="padding-left:10%">Formulario</h1>
+
+  <div class="caja">
+  
+        <form  (ngSubmit)="Guardar()" [formGroup]="formulario">
+      <div class="input-group mb-3">
+        <span class="input-group-text" >Nombre</span>
+        <input formControlName="nombre" type="text" class="form-control">
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" >Apellido</span>
+        <input formControlName="apellido" type="text" class="form-control">
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" >Documento</span>
+        <input formControlName="documento" type="number" class="form-control">
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" >Telefono</span>
+        <input formControlName="telefono" type="number" class="form-control">
+      </div>
+
+      <div class="pb-2"></div>
+        <button *ngIf="metodo == 'G'" type="submit" class="btn btn-primary">Guardar</button>
+        <button *ngIf="metodo == 'E'" type="submit" class="btn btn-primary">Editar</button>
+        
+        
+      </form>
+
+      <div class="pb-1"></div>
+      <button (click)="Cancelar()" *ngIf="metodo == 'E'" type="button" class="btn btn-danger">Cancelar</button>
+    
+
+
+  </div>
+    
+</div>
+
+<div class="pb-5"></div>
+
+<h1 face="nunito,arial,verdana" style="padding-left:11%">Lista de personas</h1>
+<div class="container-fluid">
+  <div class="caja">
+    <div class="table-responsive">
+    <table class="table table-striped">
+      <thead class="table-primary">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Documento</th>
+          <th scope="col">Teléfono</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let persona of lista; index as i">
+          <th scope="row">{{i+1}}</th>
+          <td>{{persona.nombre}}</td>
+          <td>{{persona.apellido}}</td>
+          <td>{{persona.documento}}</td>
+          <td>{{persona.telefono}}</td>
+          <td>
+            <button (click)="Editar(persona)" type="button" class="btn btn-primary">Editar</button>
+            &nbsp;
+            &nbsp;
+            <button (click)="Eliminar(persona.id)" type="button" class="btn btn-danger">Eliminar</button>
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+</div>
+  
+</div>
